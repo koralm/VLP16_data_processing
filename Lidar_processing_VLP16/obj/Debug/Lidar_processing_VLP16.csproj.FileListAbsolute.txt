@@ -1,0 +1,17 @@
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\bin\Debug\Lidar_processing_VLP16.exe.config
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\bin\Debug\Lidar_processing_VLP16.exe
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\bin\Debug\Lidar_processing_VLP16.pdb
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\MainWindow.g.cs
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\App.g.cs
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16_MarkupCompile.cache
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16_MarkupCompile.lref
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\MainWindow.baml
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.g.resources
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.Properties.Resources.resources
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.csproj.GenerateResource.Cache
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.exe
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.pdb
+c:\users\koralm\documents\visual studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.csprojResolveAssemblyReference.cache
+C:\Users\koral\Documents\Visual Studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\bin\Debug\Lidar_processing_VLP16.exe.config
+C:\Users\koral\Documents\Visual Studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.exe
+C:\Users\koral\Documents\Visual Studio 2015\Projects\Lidar_processing_VLP16\Lidar_processing_VLP16\obj\Debug\Lidar_processing_VLP16.pdb
