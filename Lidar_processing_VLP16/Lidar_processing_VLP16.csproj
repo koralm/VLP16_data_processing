@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="cloud.cs" />
+    <Compile Include="cloud_point.cs" />
     <Compile Include="sensor_VLP16.cs" />
     <Compile Include="UDP_receive.cs" />
     <Page Include="MainWindow.xaml">

@@ -45,31 +45,54 @@ namespace Lidar_processing_VLP16
         byte[] frame = new byte[(frames_number+1) * 1206];
         int i = 0;
 
+        //private void collect_data()
+        //{
+        //    Array.Copy(UDP_FROM_VLP16.buffer_frame_static, 0, frame, i * 1206, 1206);
+        //    if (i == frames_number)
+        //    {
+        //        VLP16.frame_VLP16_decode(frame);
+        //        i = 0;
+        //        Array.Clear(frame,0, (frames_number + 1) * 1206);
+        //    }
+        //    i++;
+        //}
+
         private void collect_data()
         {
-            Array.Copy(UDP_FROM_VLP16.buffer_frame_static, 0, frame, i * 1206, 1206);
-            if (i == frames_number)
-            {
-                VLP16.frame_VLP16_decode(frame);
-                i = 0;
-                Array.Clear(frame,0, (frames_number + 1) * 1206);
-            }
-            i++;
+            VLP16.frame_VLP16_decode(UDP_FROM_VLP16.frameARR);
         }
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            string[] dupa = { "kon", "koc", "baca" };
-            int[] dupaX = { 1, 2, 3, 5};
 
-            dataGrid.AutoGenerateColumns = false;
-            var col = new DataGridTextColumn();
-            var binding = new Binding("kon");
-            col.Binding = binding;
-            dataGrid.Columns.Add(col);
-            dataGrid.ItemsSource = dupaX;
-   
+            var test = VLP16.cloudX.cloudX;
+
+            //List<cloud_point> test = VLP16.cloudX;
+
+            //var test = VLP16.azimuth_1DA;
+            //var test1 = VLP16.X;
+
+            //dataGrid.AutoGenerateColumns = false;
+            //DataGridTextColumn col1 = new DataGridTextColumn();
+            //col1.Binding = new Binding("ID");
+
+            //DataGridTextColumn col2 = new DataGridTextColumn();
+            //col2.Binding = new Binding("." + test1);
+
+            //dataGrid.Columns.Add(col1);
+            //dataGrid.Columns.Add(col2);
+
+            //dataGrid.Items.Add(test);
+            //dataGrid.Items.Add(test1);
+            //dataGrid.ItemsSource = test;
+            dataGrid.ItemsSource = test;
+
         }
 
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            //dataGrid.ItemsSource = test;
+        }
     }
 }
