@@ -22,6 +22,8 @@ namespace Lidar_processing_VLP16
         private double azimuth_temp = 0;
         private double azimuth_interpolated = 0;
 
+        //TEST
+        public double[] azimuth_1DA = new double[DATA_BLOCKS_IN_FRAME * POINTS_IN_READ * 81];
 
         public void frame_VLP16_decode(byte[] VLP16_frame)
         {
@@ -30,7 +32,7 @@ namespace Lidar_processing_VLP16
 
             //init tables and variables
             double[,] frame_decoded = new double[4, DATA_BLOCKS_IN_FRAME * POINTS_IN_READ * frame_size];
-
+            
             for (int frame_index = 0; frame_index < frame_size; frame_index++)
             {
 
@@ -63,8 +65,13 @@ namespace Lidar_processing_VLP16
                     for (int point_index = 0; point_index < POINTS_IN_READ; point_index++)
                     {
                         frame_decoded[0, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index;
-                        if (point_index < 16) { frame_decoded[1, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth; }
-                        if (point_index > 15) { frame_decoded[1, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth_interpolated; }
+                        if (point_index < 16) {
+                            frame_decoded[1, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth;
+                            azimuth_1DA[point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth;}
+                        if (point_index > 15) {
+                            frame_decoded[1, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth_interpolated;
+                            azimuth_1DA[point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = azimuth_interpolated;
+                        }
                         frame_decoded[3, point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = time_stamp;
 
                         byte distance_Hbyte = VLP16_frame[((3 * point_index + 5) + BYTES_IN_FRAME * frame_index)];

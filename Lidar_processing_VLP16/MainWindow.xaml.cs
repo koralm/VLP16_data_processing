@@ -1,4 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 //USING
 using System.Net;
 using System.Net.Sockets;
@@ -45,14 +59,17 @@ namespace Lidar_processing_VLP16
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            byte A = 0x50;
-            byte B = 0x6C;
+            string[] dupa = { "kon", "koc", "baca" };
+            int[] dupaX = { 1, 2, 3, 5};
 
-            int teset = 0;
-
-            //textBox.Text =  B.ToString("X") + A.ToString("X");
-            teset = (B << 8) | A;
-            textBox.Text = Convert.ToDouble(teset).ToString();
+            dataGrid.AutoGenerateColumns = false;
+            var col = new DataGridTextColumn();
+            var binding = new Binding("kon");
+            col.Binding = binding;
+            dataGrid.Columns.Add(col);
+            dataGrid.ItemsSource = dupaX;
+   
         }
+
     }
 }
