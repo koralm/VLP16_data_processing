@@ -30,8 +30,14 @@ namespace Lidar_processing_VLP16
         public double[] Z = new double[DATA_BLOCKS_IN_FRAME * POINTS_IN_READ * 80];
 
         public cloud cloudX = new cloud();
+        public cloud cloudXC = new cloud();
         //public cloud_point point = new cloud_point(0, 0, 0, 0, 0);
         //public IList<cloud_point> cloudX = new List<cloud_point>();
+
+        //FRAME PROCESSED EVENT
+        //received event
+        public delegate void Event_processed_frame();
+        public event Event_processed_frame frame_ready;
 
         public void frame_VLP16_decode(byte[] VLP16_frame)
         {
@@ -40,7 +46,12 @@ namespace Lidar_processing_VLP16
 
             //init tables and variables
             double[,] frame_decoded = new double[7, DATA_BLOCKS_IN_FRAME * POINTS_IN_READ * frame_size];
-            
+
+            if (cloudX.cloudX.Count >= (79 * 12 * 32))
+            {
+                cloudX.cloudX.Clear();
+            }
+
             for (int frame_index = 0; frame_index < frame_size; frame_index++)
             {
 
@@ -112,10 +123,13 @@ namespace Lidar_processing_VLP16
 
                         //cloudX.cloud_add(new cloud_point(point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index, azimuth, calc_X_cooridnates(distance, azimuth, point_index), calc_Y_cooridnates(distance, azimuth, point_index), calc_Z_cooridnates(distance, azimuth, point_index)));
                         cloud_point point = new cloud_point(point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index, azimuth, calc_X_cooridnates(distance, azimuth, point_index), calc_Y_cooridnates(distance, azimuth, point_index), calc_Z_cooridnates(distance, azimuth, point_index));
-                        cloudX.cloud_add(point);
+                        cloudX.cloudX.Add(point);
                     }
                 }
             }
+
+            cloudXC = cloudX;
+            frame_ready();
         }
 
         private double azimuth_interpolation(double azimuthT, double azimuth_tempT)

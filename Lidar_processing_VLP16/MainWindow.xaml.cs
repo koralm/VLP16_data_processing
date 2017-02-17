@@ -38,6 +38,8 @@ namespace Lidar_processing_VLP16
 
             UDP_FROM_VLP16.UDP_initialize_start();
             UDP_FROM_VLP16.frame_received += collect_data;
+
+            VLP16.frame_ready += update_gird;
         }
 
         //MOVE TO sensor_VLP_class or UDP_receive
@@ -62,11 +64,19 @@ namespace Lidar_processing_VLP16
             VLP16.frame_VLP16_decode(UDP_FROM_VLP16.frameARR);
         }
 
+        List<cloud_point> konik = new List<cloud_point>();
+
+        private void update_gird()
+        {
+            konik = VLP16.cloudXC.cloudX.ToList();
+        }
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
-            var test = VLP16.cloudX.cloudX;
+            
+            var test = konik;
 
             //List<cloud_point> test = VLP16.cloudX;
 
@@ -86,13 +96,15 @@ namespace Lidar_processing_VLP16
             //dataGrid.Items.Add(test);
             //dataGrid.Items.Add(test1);
             //dataGrid.ItemsSource = test;
+            //dataGrid.Items.Clear();
             dataGrid.ItemsSource = test;
+            dataGrid.Items.Refresh();
 
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            //dataGrid.ItemsSource = test;
+            dataGrid.ItemsSource = null;
         }
     }
 }

@@ -18,10 +18,11 @@ namespace Lidar_processing_VLP16
         public void cloud_add(cloud_point point)
         {
             cloudX.Add(point);
-            if (cloudX.Count > (79 * 12 * 32))
-            {
-                cloudX.Clear();
-            }
+        }
+
+        public void cloud_clear()
+        {
+            cloudX.Clear();
         }
     }
 }
