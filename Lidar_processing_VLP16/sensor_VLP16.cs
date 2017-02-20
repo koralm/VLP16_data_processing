@@ -125,17 +125,15 @@ namespace Lidar_processing_VLP16
                         Y[point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = calc_Y_cooridnates(distance, azimuth, point_index);
                         Z[point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index] = calc_Z_cooridnates(distance, azimuth, point_index);
 
-                        //cloudX.cloud_add(new cloud_point(point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index, azimuth, calc_X_cooridnates(distance, azimuth, point_index), calc_Y_cooridnates(distance, azimuth, point_index), calc_Z_cooridnates(distance, azimuth, point_index)));
                         cloud_point point = new cloud_point(point_index + POINTS_IN_READ * DataBlock_index + POINTS_IN_READ * DATA_BLOCKS_IN_FRAME * frame_index, azimuth, calc_X_cooridnates(distance, azimuth, point_index), calc_Y_cooridnates(distance, azimuth, point_index), calc_Z_cooridnates(distance, azimuth, point_index));
                         cloudX.cloudX.Add(point);
                     }
                 }
             }
-
-            //cloudXC = cloudX;
             frame_ready();
         }
 
+        //Interpolate azimuth
         private double azimuth_interpolation(double azimuthT, double azimuth_tempT)
         {
             double azimuth_interpolatedT = 0;
