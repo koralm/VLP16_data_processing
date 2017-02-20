@@ -4,6 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lidar_processing_VLP16"
+        xmlns:s3D="http://schemas.abtsoftware.co.uk/scichart3D" 
+        xmlns:ext="http://schemas.abtsoftware.co.uk/scichart/exampleExternals"
+        Unloaded="CreateRealTime3DPointCloudChart_OnUnloaded" 
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1240">
     <Grid>
@@ -14,6 +17,50 @@
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="544,89,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Height="322" Width="444"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="537,142,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <Grid HorizontalAlignment="Left" Height="517" Margin="537,196,0,0" VerticalAlignment="Top" Width="662">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ext:SciChart3DInteractionToolbar TargetSurface="{Binding ElementName=sciChart}">
+
+                <ext:FlyoutSeparator Background="#444"/>
+
+                <ToggleButton x:Name="StartButton" Click="StartButton_Click"/>
+                <ToggleButton x:Name="PauseButton" Click="PauseButton_Click"/>
+                <ToggleButton x:Name="ResetButton" Click="ResetButton_Click"/>
+
+            </ext:SciChart3DInteractionToolbar>
+
+            <s3D:SciChart3DSurface x:Name="sciChart" Grid.Column="1" WorldDimensions="200,100,200" BorderThickness="0">
+
+                <s3D:SciChart3DSurface.Camera>
+                    <s3D:Camera3D ZoomToFitOnAttach="True"/>
+                </s3D:SciChart3DSurface.Camera>
+
+                <s3D:SciChart3DSurface.RenderableSeries>
+                    <s3D:ScatterRenderableSeries3D x:Name="ScatterRenderableSeries3D">
+                        <s3D:ScatterRenderableSeries3D.PointMarker>
+                            <s3D:PixelPointMarker3D Fill="#77ADFF2F"/>
+                        </s3D:ScatterRenderableSeries3D.PointMarker>
+                    </s3D:ScatterRenderableSeries3D>
+                </s3D:SciChart3DSurface.RenderableSeries>
+
+
+                <s3D:SciChart3DSurface.XAxis>
+                    <s3D:NumericAxis3D GrowBy="0.1, 0.1" AutoRange="Always"/>
+                </s3D:SciChart3DSurface.XAxis>
+
+                <s3D:SciChart3DSurface.YAxis>
+                    <s3D:NumericAxis3D GrowBy="0.1, 0.1" AutoRange="Always"/>
+                </s3D:SciChart3DSurface.YAxis>
+
+                <s3D:SciChart3DSurface.ZAxis>
+                    <s3D:NumericAxis3D GrowBy="0.1, 0.1" AutoRange="Always"/>
+                </s3D:SciChart3DSurface.ZAxis>
+            </s3D:SciChart3DSurface>
+        </Grid>
 
     </Grid>
 </Window>
